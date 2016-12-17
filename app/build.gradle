@@ -2,9 +2,9 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 apply plugin: 'com.getkeepsafe.dexcount'
 
-apply from: "gradle/config/signing.gradle"
-apply from: "gradle/config/jacoco.gradle"
-apply from: "gradle/config/pit.gradle"
+apply from: "gradle/signing.gradle"
+apply from: "gradle/jacoco.gradle"
+apply from: "gradle/pit.gradle"
 
 android {
     compileSdkVersion 25
@@ -20,6 +20,7 @@ android {
     buildTypes {
         debug {
             testCoverageEnabled = true
+            applicationIdSuffix ".debug"
         }
         release {
             minifyEnabled true
@@ -39,4 +40,4 @@ android {
 
 }
 
-apply from: "gradle/config/dependencies.gradle"
+apply from: "gradle/dependencies.gradle"
