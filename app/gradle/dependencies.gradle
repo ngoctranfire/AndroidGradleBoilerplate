@@ -1,15 +1,20 @@
 
 ext {
     retrofitVersion = '2.1.0'
+    loggingInterceptorVersion = '3.5.0'
+    retrofitRxJava2Adapter = '1.0.0'
     daggerVersion = '2.8'
     glideVersion = '3.7.0'
-    compatVersion = '25.0.1'
-    constraintLayout = "1.0.0-alpha8"
-    espressoVersion = "2.2.2"
-    junitVersion = "4.12"
-    rxJavaVersion = "2.0.2"
-    rxAndroidVersion = "2.0.1"
-    timberVersion = "4.4.0"
+    compatVersion = '25.1.0'
+    constraintLayout = '1.0.0-beta4'
+    espressoVersion = '2.2.2'
+    junitVersion = '4.12'
+    rxJavaVersion = '2.0.2'
+    rxAndroidVersion = '2.0.1'
+    timberVersion = '4.4.0'
+    stethoVersion = '1.4.2'
+    uberRaveVersion = '0.6.0'
+    uberInferPluginVersion = '0.7.4'
 }
 
 
@@ -19,18 +24,18 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile "com.android.support:appcompat-v7:${compatVersion}"
+    compile "com.android.support:recyclerview-v7:${compatVersion}"
     compile "com.android.support.constraint:constraint-layout:${constraintLayout}"
     // Glide
     compile "com.github.bumptech.glide:glide:${glideVersion}"
     // Dagger
-    compile "com.google.dagger:dagger-compiler:${daggerVersion}"
     compile "com.google.dagger:dagger:${daggerVersion}"
     apt "com.google.dagger:dagger-compiler:${daggerVersion}"
 
     // Retrofit
     compile "com.squareup.retrofit2:retrofit:${retrofitVersion}"
     compile "com.squareup.retrofit2:converter-gson:${retrofitVersion}"
-    compile "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}"
+    compile "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:${retrofitRxJava2Adapter}"
 
     // RxJava
     compile "io.reactivex.rxjava2:rxjava:${rxJavaVersion}"
@@ -39,8 +44,12 @@ dependencies {
     //Timber
     compile "com.jakewharton.timber:timber:${timberVersion}"
 
+    //Debug
+    debugCompile "com.squareup.okhttp3:logging-interceptor:${loggingInterceptorVersion}"
+    debugCompile "com.facebook.stetho:stetho:${stethoVersion}"
 
-    provided 'javax.annotation:jsr250-api:1.0'
+    compile "com.uber:rave:${uberRaveVersion}"
+    apt "com.uber:rave-compiler:${uberRaveVersion}"
 
     // Android Test
     androidTestCompile "com.google.dagger:dagger:${daggerVersion}"

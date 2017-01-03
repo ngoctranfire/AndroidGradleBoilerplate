@@ -9,6 +9,6 @@ import timber.log.Timber;
 public class LogTree extends Timber.DebugTree {
     @Override
     protected String createStackElementTag(StackTraceElement element) {
-        return "*HatchGoalsLog*" + " (" + super.createStackElementTag(element) + ".java:" + element.getLineNumber() + ")";
+        return "*Boilerplate*" + " (" + super.createStackElementTag(element) + ".java:" + element.getLineNumber() + ")";
     }
 }

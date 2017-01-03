@@ -1,14 +1,22 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
-apply plugin: 'com.getkeepsafe.dexcount'
+apply plugin: 'com.uber.infer.android'
 
 apply from: "gradle/signing.gradle"
 apply from: "gradle/jacoco.gradle"
 apply from: "gradle/pit.gradle"
 
 android {
+    signingConfigs {
+        config {
+            keyAlias 'boilerplate'
+            keyPassword 'boilerplate'
+            storeFile file('/Users/ngoctranfire/Desktop/AndroidProjects/keystore/boilerplate-release')
+            storePassword 'boilerplate'
+        }
+    }
     compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.wakeupngoc.boilerplate"
         minSdkVersion 19
@@ -23,6 +31,7 @@ android {
             applicationIdSuffix ".debug"
         }
         release {
+            applicationIdSuffix ".release"
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -37,7 +46,10 @@ android {
     packagingOptions {
         exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
-
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
 }
 
 apply from: "gradle/dependencies.gradle"

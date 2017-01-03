@@ -12,7 +12,7 @@ public class LogTree extends Timber.Tree {
 
     @Override
     protected boolean isLoggable(String tag, int priority) {
-        if (priority == Log.VERBOSE || priority == Log.DEBUG || priority == Log.INFO) {
+        if (priority == Log.VERBOSE || priority == Log.DEBUG) {
             return false;
         }
         return true;

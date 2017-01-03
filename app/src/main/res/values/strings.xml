@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BoilerPlate</string>
+    <string name="content_desc_single_image">Single Image Listing</string>
+    <string name="loading_images">Loading Images</string>
 </resources>
